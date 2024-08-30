@@ -28,27 +28,32 @@ function App() {
     console.log("input.username", input.username);
 
     if (!input.username) {
-      setInputError({ ...inputError, username: "username is required" });
+      setInputError((prev) => ({ ...prev, username: "username is required" }));
     }
 
     if (!input.password) {
-      setInputError({ ...inputError, password: "password is required" });
-    }
-
-    if (input.password.length < 6) {
-      setInputError({ ...inputError, password: "password ต้องมากกว่า 6 ตัว" });
+      setInputError((prev) => ({ ...prev, password: "password is required" }));
+    } else if (input.password.length < 6) {
+      setInputError((prev) => ({
+        ...prev,
+        password: "password ต้องมากกว่า 6 ตัว",
+      }));
     }
 
     if (!input.confirmPassword) {
-      setInputError({ ...inputError, confirmPassword: "password is required" });
-    }
-
-    if (input.confirmPassword !== input.password) {
-      setInputError({ ...inputError, confirmPassword: "password ไม่ตรงกัน" });
+      setInputError((prev) => ({
+        ...prev,
+        confirmPassword: "password is required",
+      }));
+    } else if (input.confirmPassword !== input.password) {
+      setInputError((prev) => ({
+        ...prev,
+        confirmPassword: "password ไม่ตรงกัน",
+      }));
     }
   };
 
-  console.log("input", input);
+  // console.log("input", input);
 
   return (
     <>

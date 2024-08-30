@@ -10,7 +10,7 @@ export default function Input({
   return (
     <>
       <input
-        className={`bg-gray-200 py-1 px-2 rounded-md outline-none border ${
+        className={`bg-gray-200 py-1 px-2 rounded-md outline-none border placeholder:text-sm ${
           error && "border-red-400"
         } `}
         value={valueInput}
